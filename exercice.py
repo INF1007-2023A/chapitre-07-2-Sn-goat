@@ -3,18 +3,41 @@
 
 from collections import deque
 
+def get_fibonacci_number(index):
+	return (
+		0 if index == 0 else
+		1 if index == 1 else
+		get_fibonacci_number(index - 1) + get_fibonacci_number(index - 2)
+	)
 
-def get_fibonacci_number(TODO):
-	pass
 
-def get_fibonacci_sequence(TODO):
-	pass
 
-def get_sorted_dict_by_decimals(TODO):
-	pass
+def get_fibonacci_sequence(length):
+    fibonacci_number = [0, 1]
+    if length <= 2:
+        return fibonacci_number[0:length]
+
+    else:
+        while length != (len(fibonacci_number)):
+            Fi = fibonacci_number[-1] + fibonacci_number[-2]
+            fibonacci_number.append(Fi)
+        return fibonacci_number
+
+def get_sorted_dict_by_decimals(dict):
+	return { key:value for key, value in sorted(dict.items(), key= lambda x: x[1] % 1, reverse=False)}
 
 def fibonacci_numbers(length):
-	pass
+    fibonacci_number = deque([0, 1])
+    i = 0
+    while i != length:
+        if i < 2:
+            yield fibonacci_number[i]
+        else:
+            Fi = fibonacci_number[-1] + fibonacci_number[-1 -1]
+            fibonacci_number.append(Fi)
+            fibonacci_number.popleft()
+            yield fibonacci_number[-1]
+        i+=1
 
 def build_recursive_sequence_generator(TODO):
 	pass
