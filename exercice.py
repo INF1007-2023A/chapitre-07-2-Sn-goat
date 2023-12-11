@@ -13,34 +13,25 @@ def get_fibonacci_number(index):
 
 
 def get_fibonacci_sequence(length):
-    fibonacci_number = [0, 1]
-    if length <= 2:
-        return fibonacci_number[0:length]
+    return [get_fibonacci_number(i) for i in range(length)]
 
-    else:
-        while length != (len(fibonacci_number)):
-            Fi = fibonacci_number[-1] + fibonacci_number[-2]
-            fibonacci_number.append(Fi)
-        return fibonacci_number
-
-def get_sorted_dict_by_decimals(dict):
-	return { key:value for key, value in sorted(dict.items(), key= lambda x: x[1] % 1, reverse=False)}
+def get_sorted_dict_by_decimals(dictionnary):
+	return dict(sorted(dictionnary.items(), key= lambda x: x[1] % 1))
 
 def fibonacci_numbers(length):
-    fibonacci_number = deque([0, 1])
-    i = 0
-    while i != length:
-        if i < 2:
-            yield fibonacci_number[i]
-        else:
-            Fi = fibonacci_number[-1] + fibonacci_number[-1 -1]
-            fibonacci_number.append(Fi)
-            fibonacci_number.popleft()
-            yield fibonacci_number[-1]
-        i+=1
+	list_fibo = deque([0, 1])
+	n = length
+	while True:
+		if n==0:
+			break
+		yield list_fibo[0]
+		fibo_num = list_fibo[0] + list_fibo[1]
+		list_fibo.append(fibo_num)
+		list_fibo.popleft()
+		n-=1
 
-def build_recursive_sequence_generator(TODO):
-	pass
+# def build_recursive_sequence_generator(TODO):
+# 	pass
 
 
 if __name__ == "__main__":
@@ -73,16 +64,16 @@ if __name__ == "__main__":
 		print(fibo_num, end=" ")
 	print("\n")
 
-	def fibo_def(last_elems):
-		return last_elems[-1] + last_elems[-2]
-	fibo = build_recursive_sequence_generator([0, 1], fibo_def)
-	for fi in fibo(10):
-		print(fi, end=" ")
-	print("\n")
+	# def fibo_def(last_elems):
+	# 	return last_elems[-1] + last_elems[-2]
+	# fibo = build_recursive_sequence_generator([0, 1], fibo_def)
+	# for fi in fibo(10):
+	# 	print(fi, end=" ")
+	# print("\n")
 
-	lucas = build_recursive_sequence_generator(TODO)
-	print(f"Lucas : {[elem for elem in lucas(10)]}")
-	perrin = build_recursive_sequence_generator(TODO)
-	print(f"Perrin : {[elem for elem in perrin(10)]}")
-	hofstadter_q = build_recursive_sequence_generator(TODO)
-	print(f"Hofstadter-Q : {[elem for elem in hofstadter_q(10)]}")
+	# lucas = build_recursive_sequence_generator(TODO)
+	# print(f"Lucas : {[elem for elem in lucas(10)]}")
+	# perrin = build_recursive_sequence_generator(TODO)
+	# print(f"Perrin : {[elem for elem in perrin(10)]}")
+	# hofstadter_q = build_recursive_sequence_generator(TODO)
+	# print(f"Hofstadter-Q : {[elem for elem in hofstadter_q(10)]}")
